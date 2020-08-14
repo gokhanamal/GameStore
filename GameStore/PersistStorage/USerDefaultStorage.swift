@@ -79,7 +79,6 @@ final class UserDefaultsStorage {
     
     func setSeen(id: Int) {
         seen[id] = true
-        print(seen)
         saveSeen()
     }
     

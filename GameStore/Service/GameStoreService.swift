@@ -56,7 +56,6 @@ final class GameStoreService: ServiceProtocol {
     
     func getGame(id: Int, completion: @escaping (Result<GameResponse, Error>) -> Void) {
         guard let url = Endpoints.game(id).url else { return }
-        print(url)
         makeGetRequest(with: url, resposeType: GameResponse.self) { result in
             completion(result)
         }
