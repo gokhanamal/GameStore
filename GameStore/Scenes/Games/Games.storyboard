@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="xpQ-Vv-ckH">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Games View Controller-->
+        <scene sceneID="RDK-r1-Lzt">
+            <objects>
+                <viewController id="xpQ-Vv-ckH" customClass="GamesViewController" customModule="GameStore" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="QDp-lC-1wY">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" searchBarStyle="minimal" translatesAutoresizingMaskIntoConstraints="NO" id="ufG-vt-n9S">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="VLD-5l-xmV"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                            </searchBar>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="XuB-5H-Icb">
+                                <rect key="frame" x="207" y="128" width="0.0" height="0.0"/>
+                                <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="LE5-LW-Si8">
+                                <rect key="frame" x="0.0" y="88" width="414" height="774"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="jS9-sC-Hgn" firstAttribute="bottom" secondItem="LE5-LW-Si8" secondAttribute="bottom" id="8rG-bF-iUh"/>
+                            <constraint firstItem="LE5-LW-Si8" firstAttribute="leading" secondItem="jS9-sC-Hgn" secondAttribute="leading" id="LSf-TL-Tmg"/>
+                            <constraint firstItem="XuB-5H-Icb" firstAttribute="top" secondItem="ufG-vt-n9S" secondAttribute="bottom" constant="40" id="QNJ-4l-tqf"/>
+                            <constraint firstItem="ufG-vt-n9S" firstAttribute="top" secondItem="jS9-sC-Hgn" secondAttribute="top" id="QyO-tK-sDn"/>
+                            <constraint firstItem="jS9-sC-Hgn" firstAttribute="trailing" secondItem="LE5-LW-Si8" secondAttribute="trailing" id="TIm-7b-D73"/>
+                            <constraint firstItem="XuB-5H-Icb" firstAttribute="centerX" secondItem="jS9-sC-Hgn" secondAttribute="centerX" id="ZoF-F7-s9p"/>
+                            <constraint firstItem="ufG-vt-n9S" firstAttribute="leading" secondItem="jS9-sC-Hgn" secondAttribute="leading" id="b0i-cE-GKv"/>
+                            <constraint firstItem="LE5-LW-Si8" firstAttribute="top" secondItem="ufG-vt-n9S" secondAttribute="bottom" id="kYs-K6-tAy"/>
+                            <constraint firstItem="ufG-vt-n9S" firstAttribute="trailing" secondItem="jS9-sC-Hgn" secondAttribute="trailing" id="tNO-Bs-G3M"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="jS9-sC-Hgn"/>
+                    </view>
+                    <connections>
+                        <outlet property="messageLabel" destination="XuB-5H-Icb" id="9eC-d2-OZh"/>
+                        <outlet property="searchBar" destination="ufG-vt-n9S" id="fP2-70-jLB"/>
+                        <outlet property="tableView" destination="LE5-LW-Si8" id="LsQ-8c-zZn"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="9vO-E4-b5q" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="88" y="90"/>
+        </scene>
+    </scenes>
+</document>

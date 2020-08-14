@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097.2" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="zhs-jL-AvX">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Game Details View Controller-->
+        <scene sceneID="G3Z-lf-Zci">
+            <objects>
+                <viewController id="zhs-jL-AvX" customClass="GameDetailsViewController" customModule="GameStore" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="NFB-tk-9QD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zz2-ne-K2t">
+                                <rect key="frame" x="0.0" y="44" width="414" height="300"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="300" id="YvV-98-XlG"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="Le6-ol-smJ">
+                                <rect key="frame" x="38" y="297" width="376" height="29"/>
+                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="25"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="xHq-7V-OMK">
+                                <rect key="frame" x="10" y="354" width="394" height="154.5"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Game Description" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bVW-KP-PAF">
+                                        <rect key="frame" x="0.0" y="0.0" width="394" height="25.5"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="22"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="249" text="Description" lineBreakMode="tailTruncation" numberOfLines="4" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="03r-4j-jWx">
+                                        <rect key="frame" x="0.0" y="40.5" width="394" height="20"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                        <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="252" verticalHuggingPriority="252" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t9i-Wy-rUi">
+                                        <rect key="frame" x="0.0" y="75.5" width="394" height="32"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                        <state key="normal" title="Visit Reddit">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onPressVisitReddit:" destination="zhs-jL-AvX" eventType="touchUpInside" id="oD5-Zh-ZVg"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zsz-Lk-Bio">
+                                        <rect key="frame" x="0.0" y="122.5" width="394" height="32"/>
+                                        <fontDescription key="fontDescription" name="Helvetica" family="Helvetica" pointSize="17"/>
+                                        <state key="normal" title="Visit Website">
+                                            <color key="titleColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="onPressVisitWebsite:" destination="zhs-jL-AvX" eventType="touchUpInside" id="hMe-V4-diL"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="TcU-IE-IuU" firstAttribute="trailing" secondItem="zz2-ne-K2t" secondAttribute="trailing" id="BJa-ce-kjC"/>
+                            <constraint firstItem="Le6-ol-smJ" firstAttribute="leading" secondItem="zz2-ne-K2t" secondAttribute="leading" constant="38" id="Wvj-fc-p9b"/>
+                            <constraint firstItem="TcU-IE-IuU" firstAttribute="trailing" secondItem="xHq-7V-OMK" secondAttribute="trailing" constant="10" id="X2F-Yy-2AQ"/>
+                            <constraint firstItem="xHq-7V-OMK" firstAttribute="leading" secondItem="TcU-IE-IuU" secondAttribute="leading" constant="10" id="XVZ-gc-vwe"/>
+                            <constraint firstItem="xHq-7V-OMK" firstAttribute="top" secondItem="zz2-ne-K2t" secondAttribute="bottom" constant="10" id="YI9-2D-JHW"/>
+                            <constraint firstItem="Le6-ol-smJ" firstAttribute="trailing" secondItem="zz2-ne-K2t" secondAttribute="trailing" id="a2z-hD-Moo"/>
+                            <constraint firstItem="zz2-ne-K2t" firstAttribute="top" secondItem="TcU-IE-IuU" secondAttribute="top" id="dXK-5d-nri"/>
+                            <constraint firstItem="Le6-ol-smJ" firstAttribute="bottom" secondItem="zz2-ne-K2t" secondAttribute="bottom" constant="-18" id="gRb-g8-3Ou"/>
+                            <constraint firstItem="zz2-ne-K2t" firstAttribute="leading" secondItem="TcU-IE-IuU" secondAttribute="leading" id="yAt-fh-gg5"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="TcU-IE-IuU"/>
+                    </view>
+                    <connections>
+                        <outlet property="descLabel" destination="03r-4j-jWx" id="kDs-Ht-QIt"/>
+                        <outlet property="imageView" destination="zz2-ne-K2t" id="Cvl-Dx-RKp"/>
+                        <outlet property="redditButton" destination="t9i-Wy-rUi" id="U67-aE-HsN"/>
+                        <outlet property="titleLabel" destination="Le6-ol-smJ" id="Ra9-4x-PXs"/>
+                        <outlet property="websiteButton" destination="zsz-Lk-Bio" id="d3e-v7-cuR"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nK5-6t-8Ek" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-255.07246376811597" y="46.875"/>
+        </scene>
+    </scenes>
+</document>
