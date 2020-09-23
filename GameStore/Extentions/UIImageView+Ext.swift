@@ -7,21 +7,13 @@
 //
 
 import UIKit
+import Kingfisher
 
 extension UIImageView {
-    func downloadImage(url: URL?) {
-        guard let url = url else { return }
-        let task = URLSession.shared.dataTask(with: url) {[weak self] data,response,_ in
-           guard let data = data else {
-               return
-           }
-           
-            if let image = UIImage(data: data) {
-                DispatchQueue.main.async {
-                    self?.image = image
-                }
-            }
-        }
-        task.resume()
+    func downloadImage(with url: String?) {
+        self.image = UIImage(named: "placeholder")
+        
+        guard let urlString = url, let url = URL(string: urlString) else { return }
+        self.kf.setImage(with: url)
     }
 }

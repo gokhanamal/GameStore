@@ -31,11 +31,4 @@ struct GameDetails {
     let description: String?
     let website: String?
     let redditURL: String?
-    
-    var url: URL? {
-        if let imageURL = imageURL {
-            return URL(string: imageURL)!
-        }
-        return nil
-    }
 }

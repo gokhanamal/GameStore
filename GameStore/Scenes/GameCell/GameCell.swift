@@ -21,8 +21,7 @@ final class GameCell: UITableViewCell {
         metaCriticLbl.text = game.metacritic > 0 ? "\(game.metacritic)" : "unknown"
         genresLbl.text = game.genre
         
-        imgView.image = UIImage(named: "placeholder")
-        imgView?.downloadImage(url: game.url)
+        imgView?.downloadImage(with: game.imageURL)
         imgView?.contentMode = .scaleAspectFill
         
         backgroundColor = game.seen ? UIColor.Colors.gray : .white

@@ -40,7 +40,6 @@ final class UserDefaultsStorage {
             let games = try UserDefaults.standard.getObject(forKey: favoritesKey, castTo: [GameResponse].self)
             completion(games)
         } catch {
-            print(error.localizedDescription)
             completion([])
         }
     }
@@ -54,7 +53,6 @@ final class UserDefaultsStorage {
             let data = try UserDefaults.standard.getObject(forKey: seenKey, castTo: [Int: Bool].self)
             completion(data)
         } catch {
-            print(error.localizedDescription)
             completion([Int:Bool]())
         }
     }

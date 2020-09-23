@@ -6,5 +6,5 @@ target 'GameStore' do
   use_frameworks!
 
   # Pods for GameStore
-    pod 'Kingfisher', '~> 5.0''
+    pod 'Kingfisher', '~> 5.0'
 end

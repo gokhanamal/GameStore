@@ -25,7 +25,6 @@ final class GamesViewModel: GamesViewModelProtocol {
             view?.handleOutput(.setLoading(true))
             service.getGames(next: nextPage, query: query) { [weak self] result in
                 guard let `self` = self else {return}
-                print(result)
                 self.handleGamesResult(result: result)
             }
         } else {
