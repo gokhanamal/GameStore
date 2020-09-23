@@ -27,6 +27,9 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="cg4-zE-PqN">
+                                <rect key="frame" x="197" y="443" width="20" height="20"/>
+                            </activityIndicatorView>
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="xHq-7V-OMK">
                                 <rect key="frame" x="10" y="354" width="394" height="154.5"/>
                                 <subviews>
@@ -67,7 +70,9 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
+                            <constraint firstItem="cg4-zE-PqN" firstAttribute="centerY" secondItem="TcU-IE-IuU" secondAttribute="centerY" id="271-hO-eqF"/>
                             <constraint firstItem="TcU-IE-IuU" firstAttribute="trailing" secondItem="zz2-ne-K2t" secondAttribute="trailing" id="BJa-ce-kjC"/>
+                            <constraint firstItem="cg4-zE-PqN" firstAttribute="centerX" secondItem="TcU-IE-IuU" secondAttribute="centerX" id="Uf5-SD-aYo"/>
                             <constraint firstItem="Le6-ol-smJ" firstAttribute="leading" secondItem="zz2-ne-K2t" secondAttribute="leading" constant="38" id="Wvj-fc-p9b"/>
                             <constraint firstItem="TcU-IE-IuU" firstAttribute="trailing" secondItem="xHq-7V-OMK" secondAttribute="trailing" constant="10" id="X2F-Yy-2AQ"/>
                             <constraint firstItem="xHq-7V-OMK" firstAttribute="leading" secondItem="TcU-IE-IuU" secondAttribute="leading" constant="10" id="XVZ-gc-vwe"/>
@@ -80,9 +85,11 @@
                         <viewLayoutGuide key="safeArea" id="TcU-IE-IuU"/>
                     </view>
                     <connections>
+                        <outlet property="activityIndicator" destination="cg4-zE-PqN" id="KsH-GY-MQe"/>
                         <outlet property="descLabel" destination="03r-4j-jWx" id="kDs-Ht-QIt"/>
                         <outlet property="imageView" destination="zz2-ne-K2t" id="Cvl-Dx-RKp"/>
                         <outlet property="redditButton" destination="t9i-Wy-rUi" id="U67-aE-HsN"/>
+                        <outlet property="stackView" destination="xHq-7V-OMK" id="s2r-S3-FAO"/>
                         <outlet property="titleLabel" destination="Le6-ol-smJ" id="Ra9-4x-PXs"/>
                         <outlet property="websiteButton" destination="zsz-Lk-Bio" id="d3e-v7-cuR"/>
                     </connections>

@@ -6,5 +6,5 @@ target 'GameStore' do
   use_frameworks!
 
   # Pods for GameStore
-    pod 'SVProgressHUD'
+    pod 'Kingfisher', '~> 5.0''
 end

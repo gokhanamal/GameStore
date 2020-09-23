@@ -9,7 +9,7 @@
 import class UIKit.UIColor
 
 extension UIColor {
-    struct Custom {
+    struct Colors {
         static let gray = UIColor(red: 224/255, green: 224/255, blue: 224/255, alpha: 1)
         static let darkGray = UIColor(red: 16/255, green: 100/255, blue: 188/255, alpha: 1.0)
     }

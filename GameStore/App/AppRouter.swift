@@ -8,14 +8,22 @@
 
 import UIKit
 
-class Router {
-    static func start() -> UITabBarController {
+class AppRouter {
+    var window: UIWindow?
+    
+    init(window: UIWindow?) {
+        self.window = window
+    }
+    
+    func start() {
         let gamesVC = GamesBuilder.make()
         
         
         let favoritesVC = FavoritesBuilder.make()
         let tabBarController = UITabBarController()
         tabBarController.viewControllers = [gamesVC, favoritesVC]
-        return tabBarController
+        
+        window?.rootViewController = tabBarController
+        window?.makeKeyAndVisible()
     }
 }

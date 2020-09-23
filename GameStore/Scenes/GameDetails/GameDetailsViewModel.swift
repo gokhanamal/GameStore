@@ -26,13 +26,13 @@ final class GameDetailsViewModel: GameDetailsViewModelProtocol {
         view?.handleOutput(.setFavorited(isFavorited))
         
         service.getGame(id: gameId) { [weak self] result in
-            guard let strongSelf = self else { return }
+            guard let `self` = self else { return }
             switch(result) {
             case.failure(let error):
                 print(error)
-                strongSelf.view?.handleOutput(.showError(error.localizedDescription))
+                self.view?.handleOutput(.showError(error.localizedDescription))
             case .success(let gameResonse):
-                strongSelf.gameResonse = gameResonse
+                self.gameResonse = gameResonse
                 let game = GameDetails(
                     name: gameResonse.name,
                     imageURL: gameResonse.imageURL,
@@ -40,8 +40,8 @@ final class GameDetailsViewModel: GameDetailsViewModelProtocol {
                     website: gameResonse.website,
                     redditURL: gameResonse.redditURL
                 )
-                strongSelf.view?.handleOutput(.showGameDetails(game))
-                strongSelf.view?.handleOutput(.setLoading(false))
+                self.view?.handleOutput(.showGameDetails(game))
+                self.view?.handleOutput(.setLoading(false))
             }
         }
     }

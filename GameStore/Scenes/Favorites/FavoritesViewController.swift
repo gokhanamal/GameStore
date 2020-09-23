@@ -57,7 +57,7 @@ extension FavoritesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: GameCell.reuseIdentifier, for: indexPath) as! GameCell
         let game = favorites[indexPath.row]
-        cell.setCell(game: game)
+        cell.setupCell(with: game)
         return cell
     }
     

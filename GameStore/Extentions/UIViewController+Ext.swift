@@ -11,16 +11,16 @@ import class UIKit.UIAlertController
 import class UIKit.UIAlertAction
 
 extension UIViewController {
-    func showAlert(title: String, message: String?, actions: [UIAlertAction]?) {
-        let vc = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        if let actions = actions {
-            for action in actions {
-                vc.addAction(action)
-            }
-        } else {
-            let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+    func showAlert(title: String, message: String?, actions: [UIAlertAction] = []) {
+      let vc = UIAlertController(title: title, message: message, preferredStyle: .alert)
+      if actions.isEmpty {
+        let action = UIAlertAction(title: "OK", style: .default, handler: nil)
+        vc.addAction(action)
+      } else {
+        for action in actions {
             vc.addAction(action)
         }
-        self.present(vc, animated: true, completion: nil)
       }
+      self.present(vc, animated: true, completion: nil)
+    }
 }

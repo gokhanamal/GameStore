@@ -25,7 +25,7 @@ class GamesBuilder {
         let image = selectedImage?.withTintColor(.gray, renderingMode: .alwaysOriginal)
         
         viewController.tabBarItem = UITabBarItem(title: "Games", image: image, selectedImage: selectedImage)
-        viewController.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.Custom.darkGray], for: .selected)
+        viewController.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.Colors.darkGray], for: .selected)
         viewController.tabBarItem.setTitleTextAttributes([.foregroundColor: UIColor.systemBlue], for: .normal)
         
         // create navigation controller

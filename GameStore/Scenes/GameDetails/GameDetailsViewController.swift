@@ -15,20 +15,35 @@ final class GameDetailsViewController: UIViewController {
     @IBOutlet weak var descLabel: UILabel!
     @IBOutlet weak var redditButton: UIButton!
     @IBOutlet weak var websiteButton: UIButton!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    @IBOutlet weak var stackView: UIStackView!
     
-    var viewModel: GameDetailsViewModelProtocol?
+    var viewModel: GameDetailsViewModelProtocol? {
+        didSet {
+            viewModel?.view = self
+        }
+    }
     var isFavorited = false
     var game: GameDetails?
     
     override func viewDidLoad() {
         setupNavigation()
-        viewModel?.view = self
+        setupGradient()
+
         viewModel?.getGameDetails()
     }
     
     private func setupNavigation() {
         tabBarController?.tabBar.isHidden = true
         navigationItem.largeTitleDisplayMode = .never
+    }
+    
+    private func setupGradient() {
+        let gradient: CAGradientLayer = CAGradientLayer()
+        gradient.colors = [UIColor.black.withAlphaComponent(0.1).cgColor, UIColor.black.withAlphaComponent(0.8).cgColor]
+        gradient.frame = CGRect(x: 0.0, y: 0.0, width: imageView.frame.size.width, height: imageView.frame.size.height)
+        
+        imageView.layer.insertSublayer(gradient, at: 0)
     }
     
     private func setupBarButton(isFavorited: Bool) {
@@ -61,10 +76,9 @@ extension GameDetailsViewController: GameDetailsViewProtocol {
     func handleOutput(_ output: GameDetailsOutputs) {
         switch output {
         case .setLoading(let isLoading):
-            isLoading ? SVProgressHUD.show() : SVProgressHUD.dismiss()
-            break;
+            setLoading(isLoading)
         case .showError(let error):
-            self.showAlert(title: "Error!", message: error, actions: nil)
+            self.showAlert(title: "Error!", message: error)
         case .showGameDetails(let gameDetails):
             handeShowGameDetails(gameDetails: gameDetails)
         case .setFavorited(let isFavorited):
@@ -72,6 +86,15 @@ extension GameDetailsViewController: GameDetailsViewProtocol {
         }
     }
     
+    private func setLoading(_ isLoading: Bool) {
+        if isLoading {
+            activityIndicator.isHidden = false
+            stackView.isHidden = true
+        } else {
+            activityIndicator.isHidden = true
+            stackView.isHidden = false
+        }
+    }
     private func removeHTMLTagsFromString(text: String?) -> String? {
         return text?.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
     }

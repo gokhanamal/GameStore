@@ -21,11 +21,12 @@ final class GamesViewModel: GamesViewModelProtocol {
     }
     
     func searchGames(query: String?) {
-        if let query = query, query.count > 3 {
+        if let query = query, query.count > 2 {
             view?.handleOutput(.setLoading(true))
-            service.getGames(next: nextPage, query: query) { [weak self]result in
-                guard let strongSelf = self else {return}
-                strongSelf.handleGamesResult(result: result)
+            service.getGames(next: nextPage, query: query) { [weak self] result in
+                guard let `self` = self else {return}
+                print(result)
+                self.handleGamesResult(result: result)
             }
         } else {
             view?.handleOutput(.showMessage("No game has been searched."))
@@ -64,10 +65,12 @@ final class GamesViewModel: GamesViewModelProtocol {
                 } else {
                     view?.handleOutput(.loadMore(games))
                 }
+                view?.handleOutput(.setLoading(false))
             }
         case .failure(let error):
             self.view?.handleOutput(.showError(error.localizedDescription))
+            view?.handleOutput(.setLoading(false))
         }
-        view?.handleOutput(.setLoading(false))
+        
     }
 }

@@ -7,14 +7,19 @@
 //
 
 import UIKit
-import SVProgressHUD
 
 final class GamesViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var messageLabel: UILabel!
     
-    var viewModel: GamesViewModelProtocol?
+    var viewModel: GamesViewModelProtocol? {
+        didSet {
+            viewModel?.view = self
+        }
+    }
+    
     var games = [Game]()
     
     override func viewDidLoad() {
@@ -23,9 +28,10 @@ final class GamesViewController: UIViewController {
         setupNavigation()
         setupSearchBar()
         setupTableView()
-        
-        viewModel?.view = self
-        
+        setupLabels()
+    }
+    
+    private func setupLabels() {
         messageLabel.text = "No game has been searched."
     }
     
@@ -56,8 +62,8 @@ extension GamesViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "GameCell", for: indexPath) as! GameCell
-        
-        cell.setCell(game: games[indexPath.row])
+        let game = games[indexPath.row]
+        cell.setupCell(with: game)
         
         return cell
     }
@@ -71,7 +77,7 @@ extension GamesViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let game = games[indexPath.row]
         viewModel?.selectGame(id: game.id)
-        tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.Custom.gray
+        tableView.cellForRow(at: indexPath)?.backgroundColor = UIColor.Colors.gray
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
@@ -80,9 +86,9 @@ extension GamesViewController: GamesViewProtocol {
     func handleOutput(_ output: GamesViewModelOutput) {
         switch output {
         case .setLoading(let isLoading):
-            isLoading ? SVProgressHUD.show() : SVProgressHUD.dismiss()
+            setLoading(isLoading)
         case .showError(let error):
-            self.showAlert(title: "Error!", message: error, actions: nil)
+            self.showAlert(title: "Error!", message: error)
         case .showGameList(let gameList):
             self.games = gameList
             tableView.isHidden = false
@@ -91,8 +97,7 @@ extension GamesViewController: GamesViewProtocol {
             self.games += gameList
             tableView.reloadData()
         case .showMessage(let message):
-            tableView.isHidden = true
-            messageLabel.text = message
+            showMessage(message: message)
         }
     }
     
@@ -101,6 +106,25 @@ extension GamesViewController: GamesViewProtocol {
         case .gameDetails(let viewModel):
             let viewController = GameDetailsBuilder.make(with: viewModel)
             navigationController?.pushViewController(viewController, animated: true)
+        }
+    }
+    
+    private func showMessage(message: String) {
+        tableView.isHidden = true
+        activityIndicator.isHidden = true
+        messageLabel.isHidden = false
+        messageLabel.text = message
+    }
+    
+    private func setLoading(_ isLoading: Bool) {
+        if isLoading {
+            tableView.isHidden = true
+            activityIndicator.isHidden = false
+            messageLabel.isHidden = true
+        } else {
+            tableView.isHidden = false
+            activityIndicator.isHidden = true
+            messageLabel.isHidden = false
         }
     }
 }

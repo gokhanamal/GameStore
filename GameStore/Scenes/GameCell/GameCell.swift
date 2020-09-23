@@ -16,23 +16,15 @@ final class GameCell: UITableViewCell {
     
     static let reuseIdentifier = "GameCell"
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-    
-    }
-    
-    func setCell(game: Game) {
+    func setupCell(with game: Game) {
         titleLbl.text = game.name
         metaCriticLbl.text = game.metacritic > 0 ? "\(game.metacritic)" : "unknown"
-        
         genresLbl.text = game.genre
+        
         imgView.image = UIImage(named: "placeholder")
         imgView?.downloadImage(url: game.url)
         imgView?.contentMode = .scaleAspectFill
-        if game.seen {
-            backgroundColor = UIColor.Custom.gray
-        } else {
-            backgroundColor = .white
-        }
+        
+        backgroundColor = game.seen ? UIColor.Colors.gray : .white
     }
 }
