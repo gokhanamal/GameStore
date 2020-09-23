@@ -29,7 +29,6 @@ final class GameDetailsViewModel: GameDetailsViewModelProtocol {
             guard let `self` = self else { return }
             switch(result) {
             case.failure(let error):
-                print(error)
                 self.view?.handleOutput(.showError(error.localizedDescription))
             case .success(let gameResonse):
                 self.gameResonse = gameResonse

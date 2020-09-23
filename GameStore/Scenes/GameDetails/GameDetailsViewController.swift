@@ -6,7 +6,6 @@
 //  Copyright © 2020 Gokhan Namal. All rights reserved.
 //
 
-import SVProgressHUD
 import UIKit
 
 final class GameDetailsViewController: UIViewController {
@@ -60,13 +59,13 @@ final class GameDetailsViewController: UIViewController {
     }
     
     @IBAction func onPressVisitWebsite(_ sender: Any) {
-        if let redditURL = game?.redditURL, let url = URL(string: redditURL) {
+        if let redditURL = game?.website, let url = URL(string: redditURL) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
     
     @IBAction func onPressVisitReddit(_ sender: Any) {
-        if let website = game?.website, let url = URL(string: website) {
+        if let website = game?.redditURL, let url = URL(string: website) {
             UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
@@ -100,8 +99,7 @@ extension GameDetailsViewController: GameDetailsViewProtocol {
     }
     
     private func handeShowGameDetails(gameDetails: GameDetails) {
-        imageView.image = UIImage(named: "placeholder")
-        imageView.downloadImage(url: gameDetails.url)
+        imageView.downloadImage(with: gameDetails.imageURL)
         titleLabel.text = gameDetails.name
         descLabel.text = removeHTMLTagsFromString(text: gameDetails.description)
         

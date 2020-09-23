@@ -22,8 +22,8 @@ class GamesViewModelTest: XCTestCase {
     
     
     func testExample() throws {
-        // try with search query less than 4 character
-        viewModel.searchGames(query: "Gta")
+        // try with search query less than 3 character
+        viewModel.searchGames(query: "Gt")
         
         XCTAssertEqual(view.outputs.count, 1)
         XCTAssertEqual(view.outputs.first, .showMessage("No game has been searched."))

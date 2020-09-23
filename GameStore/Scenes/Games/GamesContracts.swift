@@ -34,12 +34,6 @@ struct Game {
     let genre: String
     let metacritic: Int
     var seen: Bool
-    var url: URL? {
-        if let imageURL = imageURL {
-            return URL(string: imageURL)!
-        }
-        return nil
-    }
 }
 
 enum NavigationType {
