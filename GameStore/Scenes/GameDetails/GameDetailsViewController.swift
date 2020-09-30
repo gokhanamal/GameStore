@@ -22,8 +22,8 @@ final class GameDetailsViewController: UIViewController {
             viewModel?.view = self
         }
     }
-    var isFavorited = false
-    var game: GameDetails?
+    private var isFavorited = false
+    private var game: GameDetails?
     
     override func viewDidLoad() {
         setupNavigation()
@@ -94,6 +94,7 @@ extension GameDetailsViewController: GameDetailsViewProtocol {
             stackView.isHidden = false
         }
     }
+    
     private func removeHTMLTagsFromString(text: String?) -> String? {
         return text?.replacingOccurrences(of: "<[^>]+>", with: "", options: .regularExpression, range: nil)
     }

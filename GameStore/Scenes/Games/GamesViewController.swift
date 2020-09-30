@@ -20,7 +20,7 @@ final class GamesViewController: UIViewController {
         }
     }
     
-    var games = [Game]()
+    private var games = [Game]()
     
     override func viewDidLoad() {
         super.viewDidLoad()

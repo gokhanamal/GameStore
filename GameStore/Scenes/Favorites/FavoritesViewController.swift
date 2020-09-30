@@ -14,7 +14,7 @@ final class FavoritesViewController: UIViewController {
     
     var viewModel: FavoritesViewModelProtocol?
     
-    var favorites = [Game]()
+    private var favorites = [Game]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
