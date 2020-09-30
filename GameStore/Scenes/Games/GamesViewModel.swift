@@ -54,7 +54,7 @@ final class GamesViewModel: GamesViewModelProtocol {
                )
             }
             
-            if games.count < 1 {
+            if games.isEmpty {
                 view?.handleOutput(.showMessage("There is no games found."))
             } else {
                 nextPage = response.next
