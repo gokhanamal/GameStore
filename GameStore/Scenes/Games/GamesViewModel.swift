@@ -70,6 +70,5 @@ final class GamesViewModel: GamesViewModelProtocol {
             self.view?.handleOutput(.showError(error.localizedDescription))
             view?.handleOutput(.setLoading(false))
         }
-        
     }
 }

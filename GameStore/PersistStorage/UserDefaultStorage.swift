@@ -73,16 +73,18 @@ final class UserDefaultsStorage {
     }
     
     func isFavorited(id: Int) -> Bool {
-        let isExist = favorites.first(where: {$0.id == id})
-        
-        if(isExist == nil) {
+        if let _ = favorites.first(where: {$0.id == id}) {
             return false
         }
         return true
     }
     
     func saveFavorites() {
-        try? UserDefaults.standard.setObject(favorites, forKey: favoritesKey)
+        do {
+            try UserDefaults.standard.setObject(favorites, forKey: favoritesKey)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
     
     func setSeen(id: Int) {
@@ -95,6 +97,10 @@ final class UserDefaultsStorage {
     }
     
     func saveSeen() {
-        try? UserDefaults.standard.setObject(seen, forKey: seenKey)
+        do {
+            try UserDefaults.standard.setObject(seen, forKey: seenKey)
+        } catch {
+            print(error.localizedDescription)
+        }
     }
 }
