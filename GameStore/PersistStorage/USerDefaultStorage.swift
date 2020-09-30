@@ -20,11 +20,21 @@ final class UserDefaultsStorage {
     
     init() {
         loadFavorites { result in
-            favorites = result
+            switch result {
+            case .success(let favorites):
+                self.favorites = favorites
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
         
         loadSeen { result in
-            seen = result
+            switch result {
+            case .success(let seen):
+                self.seen = seen
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
         }
     }
     
@@ -35,12 +45,12 @@ final class UserDefaultsStorage {
         }
     }
     
-    func loadFavorites(completion: ([GameResponse]) -> Void) {
+    func loadFavorites(completion: (Result<[GameResponse], Error>) -> Void) {
         do {
             let games = try UserDefaults.standard.getObject(forKey: favoritesKey, castTo: [GameResponse].self)
-            completion(games)
+            completion(.success(games))
         } catch {
-            completion([])
+            completion(.failure(error))
         }
     }
     
@@ -48,12 +58,12 @@ final class UserDefaultsStorage {
         return favorites
     }
     
-    func loadSeen(completion: ([Int: Bool] ) -> Void){
+    func loadSeen(completion: (Result<[Int: Bool], Error>) -> Void){
         do {
             let data = try UserDefaults.standard.getObject(forKey: seenKey, castTo: [Int: Bool].self)
-            completion(data)
+            completion(.success(data))
         } catch {
-            completion([Int:Bool]())
+            completion(.failure(error))
         }
     }
     
